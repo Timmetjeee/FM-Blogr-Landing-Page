@@ -344,8 +344,8 @@ p {
     bottom: 0;
     margin: auto 0;
   }
-  .top-section main,
-  .bottom-section main {
+  .top-section .section-body,
+  .bottom-section .section-body {
     width: 46.5%;
   }
   .top-section section:first-of-type,
@@ -358,7 +358,7 @@ p {
     display: -ms-flexbox;
     display: flex;
   }
-  .top-section main {
+  .top-section .section-body {
     -webkit-box-ordinal-group: 0;
         -ms-flex-order: -1;
             order: -1;
@@ -430,7 +430,7 @@ p {
     bottom: 0;
     margin: auto 0;
   }
-  .middle-section main {
+  .middle-section .section-body {
     width: 46.5%;
   }
   .middle-section h2 {
