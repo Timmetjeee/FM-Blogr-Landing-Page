@@ -87,25 +87,6 @@ h1 {
   cursor: pointer;
 }
 
-nav.collapsed {
-  z-index: 1;
-}
-
-nav.collapsed .nav-content {
-  display: block;
-  position: absolute;
-  top: 7em;
-  left: 2em;
-  right: 2em;
-  background: white;
-  border-radius: 0.5em;
-}
-
-.nav-content {
-  display: none;
-  padding: 1.75em;
-}
-
 @media (min-width: 57.5em) {
   header .row {
     -webkit-box-pack: start;
@@ -144,6 +125,22 @@ nav.collapsed .nav-content {
 
 /* Dropdowns */
 @media (max-width: 57.5em) {
+  .nav-content {
+    display: none;
+    padding: 1.75em;
+  }
+  nav.collapsed {
+    z-index: 1;
+  }
+  nav.collapsed .nav-content {
+    display: block;
+    position: absolute;
+    top: 7em;
+    left: 2em;
+    right: 2em;
+    background: white;
+    border-radius: 0.5em;
+  }
   .dropdown {
     margin: 0.5em 0 2em 0;
   }
