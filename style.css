@@ -314,6 +314,11 @@ p {
 }
 
 /* Top & Bottom Section */
+.top-section,
+.bottom-section {
+  overflow-x: hidden;
+}
+
 .top-section section:first-of-type,
 .bottom-section section:first-of-type {
   margin-bottom: 3em;
