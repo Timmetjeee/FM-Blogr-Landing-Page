@@ -1,0 +1,498 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&family=Ubuntu:wght@400;500;700&display=swap");
+
+$primary: hsl(356, 100%, 66%);
+$light: hsl(355, 100%, 74%);
+$dark: hsl(240, 10%, 16%);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  width: 90%;
+  max-width: 70em;
+  margin: 0 auto;
+}
+
+.desktop-image {
+  display: none;
+}
+
+@media (min-width: 57.5em) {
+  .mobile-image {
+    display: none;
+  }
+
+  .desktop-image {
+    display: inline;
+  }
+}
+
+/* Header */
+
+header {
+  background-image: url(images/bg-pattern-intro.svg),
+    linear-gradient(180deg, hsl(13, 100%, 72%) 0%, hsl(353, 100%, 62%) 100%);
+  background-size: 350%, 100%;
+  background-position: -20em -15em, 0;
+
+  padding: 3em 0.5em 9em 0.5em;
+  border-bottom-left-radius: 8em;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  p {
+    color: white;
+    opacity: 0.8;
+    font-family: "Overpass", sans-serif;
+    font-size: 1.125rem;
+    margin-bottom: 2.25em;
+  }
+
+  @media (min-width: 57.5em) {
+    background-image: url(images/bg-pattern-intro.svg),
+      linear-gradient(90deg, hsl(13, 100%, 72%) 0%, hsl(353, 100%, 62%) 100%);
+    background-size: 200%, 100%;
+    background-position: 20% -70%, 0;
+  }
+}
+
+h1 {
+  margin: 7.5rem 0 1rem 0;
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: normal;
+  color: white;
+}
+
+/* Navigation */
+
+.hamburger {
+  cursor: pointer;
+}
+
+nav.collapsed {
+  z-index: 1;
+
+  .nav-content {
+    display: block;
+    position: absolute;
+
+    top: 7em;
+    left: 2em;
+    right: 2em;
+
+    background: white;
+    border-radius: 0.5em;
+  }
+}
+
+.nav-content {
+  display: none;
+  padding: 1.75em;
+}
+
+@media (min-width: 57.5em) {
+  header .row {
+    justify-content: flex-start;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  nav {
+    margin-left: 1.5em;
+    flex: 1;
+  }
+
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+  }
+
+  .nav-dropdowns {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Dropdowns */
+
+@media (max-width: 57.5em) {
+  .dropdown {
+    margin: 0.5em 0 2em 0;
+
+    &.collapsed {
+      .dropdown-header {
+        color: hsl(207, 13%, 34%);
+
+        &:hover,
+        &:focus {
+          color: hsl(240, 10%, 16%);
+        }
+      }
+
+      .dropdown-body {
+        display: block;
+      }
+    }
+  }
+
+  .dropdown-header {
+    color: hsl(240, 10%, 16%);
+
+    &:hover,
+    &:focus {
+      color: hsl(207, 13%, 34%);
+    }
+  }
+}
+
+@media (min-width: 57.5em) {
+  .dropdown {
+    position: relative;
+    padding: 0 1em;
+    text-align: start;
+
+    &.collapsed {
+      .dropdown-body {
+        display: block;
+        position: absolute;
+        top: 2.5em;
+        left: -0.25em;
+        right: -2em;
+        margin: 0 auto;
+        border-radius: 0.5em;
+        background-color: white;
+      }
+    }
+  }
+
+  .dropdown-header {
+    color: white;
+    opacity: 0.8;
+    font-weight: 600;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+.dropdown.collapsed img {
+  transform: rotate(180deg);
+}
+
+.dropdown-header {
+  cursor: pointer;
+
+  img {
+    vertical-align: middle;
+    transition: transform 0.3s;
+  }
+}
+
+.dropdown-body {
+  display: none;
+
+  a {
+    display: block;
+    margin: 1em;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    color: hsl(207, 13%, 34%);
+
+    &:hover,
+    &:focus {
+      font-weight: 600;
+      color: hsl(240, 10%, 16%);
+    }
+  }
+}
+
+/* Buttons */
+
+@mixin button {
+  display: inline-block;
+
+  min-width: 8.5em;
+  padding: 0.75em;
+  border: 2px solid transparent;
+  border-radius: 1.5em;
+  margin: 0.375em;
+
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.button-login {
+  @include button();
+}
+
+.button-sign-up,
+.button-sff,
+.button-lm:hover,
+.button-lm:focus {
+  @include button();
+
+  background-color: white;
+  border-color: white;
+  color: $light;
+}
+
+.button-lm {
+  @include button();
+
+  background-color: transparent;
+  border-color: white;
+}
+
+.button-sff:hover,
+.button-sff:focus,
+.button-login:hover,
+.button-login:focus,
+.button-sign-up:hover,
+.button-sign-up:focus {
+  background-color: $light;
+  border-color: $light;
+  color: white;
+}
+
+@media (max-width: 57.5em) {
+  .button-login {
+    color: $dark;
+  }
+
+  .button-sign-up {
+    @include button();
+
+    border: none;
+    padding: padding + 2px;
+
+    background: linear-gradient(90deg, hsl(13, 100%, 72%), hsl(353, 100%, 62%));
+    color: white;
+  }
+}
+
+/* Sections */
+
+h2,
+h3 {
+  font-family: "Overpass";
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: hsl(208, 49%, 24%);
+}
+
+p {
+  color: hsl(207, 13%, 34%);
+  line-height: 3.25ch;
+}
+
+/* Top & Bottom Section */
+
+.top-section,
+.bottom-section {
+  section:first-of-type {
+    margin-bottom: 3em;
+  }
+}
+
+.top-section h2 {
+  margin: 4em 0.5em 3em 0.5em;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  text-align: center;
+}
+
+.bottom-section {
+  margin: 6em auto;
+}
+
+@media (min-width: 57.5em) {
+  .top-section,
+  .bottom-section {
+    text-align: start;
+
+    img {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+    }
+
+    main {
+      width: 46.5%;
+    }
+
+    section:first-of-type {
+      margin-bottom: 5em;
+    }
+  }
+
+  .top-section {
+    .container {
+      position: relative;
+      display: flex;
+    }
+
+    main {
+      order: -1;
+    }
+
+    img {
+      right: -25em;
+    }
+  }
+
+  .bottom-section {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    margin: 16em auto;
+
+    img {
+      left: -25em;
+    }
+  }
+}
+
+/* Middle Section */
+
+.middle-section {
+  position: relative;
+  margin-top: 16em;
+
+  background: url(images/bg-pattern-circles.svg) no-repeat,
+    linear-gradient(180deg, hsl(237, 17%, 21%) 0%, hsl(237, 23%, 32%) 100%);
+  background-size: 160%, 100%;
+  background-position: -7em -13.5em, center;
+  border-radius: 0 6em 0 6em;
+
+  img {
+    position: absolute;
+    top: -12em;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
+    @media (max-width: 70em) {
+      max-width: 22.5em;
+    }
+  }
+
+  h2 {
+    padding-top: 5.5em;
+    font-size: 2.25rem;
+    color: white;
+  }
+
+  p {
+    padding-bottom: 6em;
+    color: white;
+    opacity: 0.8;
+  }
+
+  @media (min-width: 70em) {
+    text-align: start;
+
+    background-size: 75%, 100%;
+    background-position: -14em -34em, center;
+
+    img {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+    }
+
+    main {
+      width: 46.5%;
+    }
+
+    h2 {
+      padding-top: 2em;
+    }
+
+    .container {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      margin: 0 auto;
+
+      img {
+        top: 2.5em;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto 0;
+      }
+    }
+  }
+}
+
+/* Footer */
+
+footer {
+  padding: 3.5em;
+  background: hsl(240, 10%, 16%);
+  border-top-right-radius: 6em;
+
+  div {
+    margin-top: 3em;
+    font-weight: 600;
+    color: white;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: inline-block;
+    margin: 0.5em 0;
+    font-weight: normal;
+    text-decoration: none;
+    color: hsl(240, 2%, 79%);
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  @media (min-width: 47.5em) {
+    text-align: start;
+
+    .container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    .container div {
+      width: 25%;
+      margin-top: 1.25em;
+    }
+  }
+}
